@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cyevudhctqph6"]
+[gd_scene load_steps=3 format=3 uid="uid://cyevudhctqph6"]
 
 [ext_resource type="Script" uid="uid://ccaiyf1yuvudm" path="res://scripts/player_customization.gd" id="1_5aefq"]
+[ext_resource type="PackedScene" uid="uid://b6grkpxfqljut" path="res://scenes/game.tscn" id="2_q8mde"]
 
 [node name="PlayerCustomization" type="Control"]
 layout_mode = 3
@@ -59,6 +60,8 @@ offset_bottom = -52.0
 grow_horizontal = 2
 grow_vertical = 0
 text = "creating lobby"
+
+[node name="Game" parent="." instance=ExtResource("2_q8mde")]
 
 [connection signal="text_changed" from="VBoxContainer/LineEdit" to="." method="_on_line_edit_text_changed"]
 [connection signal="pressed" from="VBoxContainer/Host" to="." method="_on_host_pressed"]
