@@ -1,0 +1,65 @@
+[gd_scene load_steps=2 format=3 uid="uid://cyevudhctqph6"]
+
+[ext_resource type="Script" uid="uid://ccaiyf1yuvudm" path="res://scripts/player_customization.gd" id="1_5aefq"]
+
+[node name="PlayerCustomization" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5aefq")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -127.0
+offset_top = -20.0
+offset_right = 127.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 30
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 41
+text = "Set Username"
+horizontal_alignment = 1
+
+[node name="LineEdit" type="LineEdit" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Host" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "host"
+
+[node name="Join" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "join"
+
+[node name="CreatingLobby" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -55.5
+offset_top = -75.0
+offset_right = 55.5
+offset_bottom = -52.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "creating lobby"
+
+[connection signal="text_changed" from="VBoxContainer/LineEdit" to="." method="_on_line_edit_text_changed"]
+[connection signal="pressed" from="VBoxContainer/Host" to="." method="_on_host_pressed"]
+[connection signal="pressed" from="VBoxContainer/Join" to="." method="_on_join_pressed"]

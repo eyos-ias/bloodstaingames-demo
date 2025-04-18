@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://b6grkpxfqljut"]
+
+[ext_resource type="Script" uid="uid://cp64dlcffpy4y" path="res://scripts/player_spawner.gd" id="1_uwrxv"]
+[ext_resource type="PackedScene" uid="uid://bjtribvtin47g" path="res://scenes/player.tscn" id="2_yqjtg"]
+
+[node name="Game" type="Node2D"]
+
+[node name="PlayerSpawner" type="Node2D" parent="."]
+position = Vector2(559, 317)
+script = ExtResource("1_uwrxv")
+player_scene = ExtResource("2_yqjtg")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 536.0
+offset_top = 2.0
+offset_right = 645.0
+offset_bottom = 59.0
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 41
+text = "game"

@@ -1,0 +1,36 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[GD-Sync]
+
+version="0.8"
+protectedMode=false
+publicKey="e001fa27427abccd"
+privateKey="f9620d0d4960a585"
+uniqueUsername=true
+
+[application]
+
+config/name="bloodstaingames-demo"
+run/main_scene="uid://du4x8kkm84oro"
+config/features=PackedStringArray("4.4", "Mobile")
+config/icon="res://icon.svg"
+
+[autoload]
+
+GDSync="*res://addons/GD-Sync/MultiplayerClient.gd"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/GD-Sync/plugin.cfg")
+
+[rendering]
+
+renderer/rendering_method="mobile"
