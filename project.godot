@@ -14,7 +14,7 @@ version="0.8"
 protectedMode=false
 publicKey="e001fa27427abccd"
 privateKey="f9620d0d4960a585"
-uniqueUsername=true
+uniqueUsername=false
 
 [application]
 
@@ -26,11 +26,25 @@ config/icon="res://icon.svg"
 [autoload]
 
 GDSync="*res://addons/GD-Sync/MultiplayerClient.gd"
+Globals="*res://globals/Globals.gd"
 
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/GD-Sync/plugin.cfg")
 
+[global_group]
+
+player=""
+
+[input]
+
+attack={
+"deadzone": 0.2,
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":1,"canceled":false,"pressed":false,"double_click":false,"script":null)
+]
+}
+
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="mobile"

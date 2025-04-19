@@ -62,6 +62,7 @@ grow_vertical = 0
 text = "creating lobby"
 
 [node name="Game" parent="." instance=ExtResource("2_q8mde")]
+visible = false
 
 [connection signal="text_changed" from="VBoxContainer/LineEdit" to="." method="_on_line_edit_text_changed"]
 [connection signal="pressed" from="VBoxContainer/Host" to="." method="_on_host_pressed"]

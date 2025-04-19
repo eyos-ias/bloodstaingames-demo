@@ -1,9 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://b6grkpxfqljut"]
+[gd_scene load_steps=7 format=3 uid="uid://b6grkpxfqljut"]
 
+[ext_resource type="Script" uid="uid://cdprb7q467gov" path="res://scenes/game.gd" id="1_iywne"]
 [ext_resource type="Script" uid="uid://cp64dlcffpy4y" path="res://scripts/player_spawner.gd" id="1_uwrxv"]
 [ext_resource type="PackedScene" uid="uid://bjtribvtin47g" path="res://scenes/player.tscn" id="2_yqjtg"]
+[ext_resource type="Script" uid="uid://qi2d523xbh1r" path="res://addons/GD-Sync/Scripts/Types/NodeInstantiator.gd" id="4_lbhrr"]
+[ext_resource type="PackedScene" uid="uid://ct8yjuk7hfygo" path="res://scenes/enemy.tscn" id="5_iywne"]
+[ext_resource type="Script" uid="uid://bvaxg8lj3mceu" path="res://addons/GD-Sync/Scripts/Types/PropertySynchronizer.gd" id="6_p57ef"]
 
 [node name="Game" type="Node2D"]
+script = ExtResource("1_iywne")
 
 [node name="PlayerSpawner" type="Node2D" parent="."]
 position = Vector2(559, 317)
@@ -18,3 +23,30 @@ offset_bottom = 59.0
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 41
 text = "game"
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(14, 538)
+
+[node name="EnemyInstantiator" type="Node" parent="."]
+script = ExtResource("4_lbhrr")
+target_location = NodePath("")
+scene = ExtResource("5_iywne")
+replicate_on_join = true
+sync_starting_changes = true
+excluded_properties = PackedStringArray()
+metadata/_custom_type_script = "uid://qi2d523xbh1r"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[node name="PropertySynchronizer" type="Node" parent="."]
+script = ExtResource("6_p57ef")
+broadcast = 2
+node_path = NodePath("../Timer")
+properties = PackedStringArray("wait_time")
+interpolated = false
+interpolation_speed = 1.0
+metadata/_custom_type_script = "uid://bvaxg8lj3mceu"
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

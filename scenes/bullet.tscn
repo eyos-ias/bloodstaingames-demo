@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://dfix6nag3vf3e"]
+
+[ext_resource type="Script" uid="uid://cruxb5tbnyvoq" path="res://scripts/bullet.gd" id="1_l5glv"]
+[ext_resource type="Script" uid="uid://bvaxg8lj3mceu" path="res://addons/GD-Sync/Scripts/Types/PropertySynchronizer.gd" id="2_eoqba"]
+[ext_resource type="Texture2D" uid="uid://djecjqj4wuwv4" path="res://icon.svg" id="3_qncy5"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tamys"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l5glv"]
+size = Vector2(58, 8)
+
+[node name="Bullet" type="Node2D"]
+script = ExtResource("1_l5glv")
+
+[node name="PropertySynchronizer" type="Node" parent="."]
+script = ExtResource("2_eoqba")
+refresh_rate = 60
+node_path = NodePath("..")
+properties = PackedStringArray("global_position")
+interpolated = true
+interpolation_speed = 60.0
+metadata/_custom_type_script = "uid://bvaxg8lj3mceu"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_tamys")
+position = Vector2(-9.53674e-07, 0)
+scale = Vector2(0.171875, 0.125)
+texture = ExtResource("3_qncy5")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -29.0
+offset_top = -6.0
+offset_right = 31.0
+offset_bottom = 4.0
+
+[node name="Area2D" type="Area2D" parent="." groups=["bullet"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(1, -1)
+shape = SubResource("RectangleShape2D_l5glv")

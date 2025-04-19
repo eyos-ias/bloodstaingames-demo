@@ -22,6 +22,7 @@ func client_joined(client_id: int) -> void:
 	get_tree().current_scene.add_child(player)
 	player.client_id = client_id
 	GDSync.set_gdsync_owner(player, client_id)
+	get_parent().players_joined = true
 
 
 func client_left(client_id: int) -> void:

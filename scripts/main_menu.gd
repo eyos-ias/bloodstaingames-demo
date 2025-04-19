@@ -19,16 +19,16 @@ func connected() -> void:
 	print("connected")
 	get_tree().change_scene_to_file("res://scenes/player_customization.tscn")
 
-func connection_failed(error: int) -> void:
+func connection_failed(error: int):
 	match (error):
-		GDSync.ConnectionError.CONNECTION_ERROR_NONE:
-			print("Connection failed: None")
-		GDSync.ConnectionError.CONNECTION_ERROR_WRONG_VERSION:
-			print("Connection failed: Wrong version")
-		GDSync.ConnectionError.CONNECTION_ERROR_WRONG_HOST:
-			print("Connection failed: Wrong host")
+		ENUMS.CONNECTION_FAILED.INVALID_PUBLIC_KEY:
+			push_error("The public or private key you entered were invalid.")
+		ENUMS.CONNECTION_FAILED.TIMEOUT:
+			push_error("Unable to connect, please check your internet connection.")
+
 
 func _on_connet_pressed() -> void:
 	connect_button.disabled = true
 	connecting_label.visible = true
 	GDSync.start_multiplayer()
+	# GDSync.start_local_multiplayer()
