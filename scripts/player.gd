@@ -27,6 +27,13 @@ func _physics_process(delta: float) -> void:
 	
 	if Input.is_action_pressed("attack") and not animation_player.current_animation == "attack_horizontal":
 		animation_player.play("attack_horizontal")
+	
+	if Input.is_action_just_released("attack"):
+		var bullet = bullet_instantiator.instantiate_node()
+		bullet.global_position = global_position
+		bullet.direction = (get_global_mouse_position() - global_position).normalized()
+		bullet.rotation = bullet.direction.angle()
+		
 	var direction = Vector2.ZERO
 	# Flip sprite horizontally based on movement direction
 
@@ -62,9 +69,3 @@ func connection_failed(error: int):
 func _on_synchronized_animation_player_animation_finished(anim_name: StringName) -> void:
 	if !GDSync.is_gdsync_owner(self):
 		return
-
-	if anim_name == "attack_horizontal":
-		var bullet = bullet_instantiator.instantiate_node()
-		bullet.global_position = global_position
-		bullet.direction = (get_global_mouse_position() - global_position).normalized()
-		bullet.rotation = bullet.direction.angle()

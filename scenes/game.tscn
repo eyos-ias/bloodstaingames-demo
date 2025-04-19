@@ -49,4 +49,7 @@ interpolated = false
 interpolation_speed = 1.0
 metadata/_custom_type_script = "uid://bvaxg8lj3mceu"
 
+[node name="enemy" parent="." instance=ExtResource("5_iywne")]
+position = Vector2(948, 238)
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

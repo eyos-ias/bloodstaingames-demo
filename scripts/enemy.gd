@@ -20,5 +20,7 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 		print("i got shot")
 		health -= 1
 		health_label.text = str(health)
+		
 		if health <= 0:
+			get_parent().players_joined = true
 			queue_free()
